@@ -20,6 +20,7 @@ def excluir_dados():
     dados_lidos = cursor.fetchall()
     valor_id = dados_lidos[linha][0]
     cursor.execute("DELETE FROM dados WHERE id =" + str(valor_id))
+    banco.commit()
 
 
 def editar_dados():
@@ -47,6 +48,7 @@ def salvar_edicao():
     cursor = banco.cursor()
     cursor.execute("UPDATE dados SET usuario = '{}', senha = '{}' WHERE id = {}".format(
         usuario, senha, numero_id))
+    banco.commit()
 
     tela_editar.close()
     tela_admin.close()
