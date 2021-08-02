@@ -8,8 +8,6 @@ banco = mysql.connector.connect(
     database="usuarios"
 )
 
-numero_id = 0
-
 
 def excluir_dados():
     linha = tela_admin.tableWidget.currentRow()
@@ -62,40 +60,40 @@ def logout_editar():
 
 
 def cadastrar():
-    usuario = cadastro.lineEdit.text()
-    senha = cadastro.lineEdit_2.text()
+    usuario = tela_cadastro.lineEdit.text()
+    senha = tela_cadastro.lineEdit_2.text()
 
     if usuario == "" or senha == "":
-        cadastro.label_5.setText("Preencha todos os campos!")
+        tela_cadastro.label_5.setText("Preencha todos os campos!")
         return
 
-    cadastro.label_4.setText("Usuário cadastrado com sucesso!")
-    cadastro.label_5.setText("")
+    tela_cadastro.label_4.setText("Usuário cadastrado com sucesso!")
+    tela_cadastro.label_5.setText("")
     cursor = banco.cursor()
     query = "INSERT INTO dados (usuario, senha) VALUES (%s,%s)"
     info = (str(usuario), str(senha))
     cursor.execute(query, info)
     banco.commit()
-    cadastro.lineEdit.setText("")
-    cadastro.lineEdit_2.setText("")
+    tela_cadastro.lineEdit.setText("")
+    tela_cadastro.lineEdit_2.setText("")
 
 
 def sair():
-    cadastro.label_4.setText("")
-    cadastro.label_5.setText("")
-    cadastro.close()
-    primeira_tela.show()
+    tela_cadastro.label_4.setText("")
+    tela_cadastro.label_5.setText("")
+    tela_cadastro.close()
+    tela_principal.show()
 
 
 def inicio():
-    primeira_tela.close()
-    cadastro.show()
+    tela_principal.close()
+    tela_cadastro.show()
 
 
 def login():
-    primeira_tela.label_3.setText("")
-    nome_usuario = primeira_tela.lineEdit.text()
-    senha = primeira_tela.lineEdit_2.text()
+    tela_principal.label_3.setText("")
+    nome_usuario = tela_principal.lineEdit.text()
+    senha = tela_principal.lineEdit_2.text()
     cursor = banco.cursor()
     query = "SELECT usuario, senha FROM dados WHERE usuario like'" + \
         nome_usuario+"' and senha like '" + senha + "'"
@@ -103,19 +101,19 @@ def login():
     resultado = cursor.fetchone()
 
     if resultado == None:
-        primeira_tela.label_3.setText("Login ou senha incorreto!")
+        tela_principal.label_3.setText("Login ou senha incorreto!")
     elif nome_usuario == "admin" and senha == "admin":
-        primeira_tela.lineEdit.setText("")
-        primeira_tela.lineEdit_2.setText("")
-        primeira_tela.close()
+        tela_principal.lineEdit.setText("")
+        tela_principal.lineEdit_2.setText("")
+        tela_principal.close()
         tela_admin.show()
         admin()
 
     else:
-        primeira_tela.lineEdit.setText("")
-        primeira_tela.lineEdit_2.setText("")
-        primeira_tela.close()
-        segunda_tela.show()
+        tela_principal.lineEdit.setText("")
+        tela_principal.lineEdit_2.setText("")
+        tela_principal.close()
+        tela_logado.show()
 
 
 def admin():
@@ -135,30 +133,30 @@ def admin():
 
 
 def logout():
-    segunda_tela.close()
+    tela_logado.close()
     tela_admin.close()
-    primeira_tela.show()
+    tela_principal.show()
 
 
 app = QtWidgets.QApplication([])
-cadastro = uic.loadUi("cadastro.ui")
-primeira_tela = uic.loadUi("primeira_tela.ui")
-segunda_tela = uic.loadUi("segunda_tela.ui")
-tela_admin = uic.loadUi("tela_admin.ui")
-tela_editar = uic.loadUi("tela_editar.ui")
-cadastro.pushButton.clicked.connect(cadastrar)
-cadastro.pushButton_2.clicked.connect(sair)
-primeira_tela.pushButton_2.clicked.connect(inicio)
-primeira_tela.pushButton.clicked.connect(login)
-segunda_tela.pushButton.clicked.connect(logout)
+tela_cadastro = uic.loadUi("./interfaces/tela_cadastro.ui")
+tela_principal = uic.loadUi("./interfaces/tela_principal.ui")
+tela_logado = uic.loadUi("./interfaces/tela_logado.ui")
+tela_admin = uic.loadUi("./interfaces/tela_admin.ui")
+tela_editar = uic.loadUi("./interfaces/tela_editar.ui")
+tela_cadastro.pushButton.clicked.connect(cadastrar)
+tela_cadastro.pushButton_2.clicked.connect(sair)
+tela_principal.pushButton_2.clicked.connect(inicio)
+tela_principal.pushButton.clicked.connect(login)
+tela_logado.pushButton.clicked.connect(logout)
 tela_admin.pushButton.clicked.connect(logout)
 tela_admin.pushButton_2.clicked.connect(excluir_dados)
 tela_admin.pushButton_3.clicked.connect(editar_dados)
 
 tela_editar.pushButton.clicked.connect(logout_editar)
 tela_editar.pushButton_2.clicked.connect(salvar_edicao)
-primeira_tela.lineEdit_2.setEchoMode(QtWidgets.QLineEdit.Password)
-cadastro.lineEdit_2.setEchoMode(QtWidgets.QLineEdit.Password)
+tela_principal.lineEdit_2.setEchoMode(QtWidgets.QLineEdit.Password)
+tela_cadastro.lineEdit_2.setEchoMode(QtWidgets.QLineEdit.Password)
 
-primeira_tela.show()
+tela_principal.show()
 app.exec()
