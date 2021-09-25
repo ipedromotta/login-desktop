@@ -29,7 +29,7 @@
    <string notr="true">background-color: rgb(57, 130, 195);</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QLabel" name="label">
+   <widget class="QLabel" name="lbl_logado">
     <property name="geometry">
      <rect>
       <x>88</x>
@@ -51,7 +51,7 @@ font-size: 24px;</string>
      <string>Você está logado!</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton">
+   <widget class="QPushButton" name="btn_logout">
     <property name="geometry">
      <rect>
       <x>121</x>

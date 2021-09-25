@@ -29,7 +29,7 @@
    <string notr="true">background-color: rgb(57, 130, 195);</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QLabel" name="label">
+   <widget class="QLabel" name="lbl_edite_dados">
     <property name="geometry">
      <rect>
       <x>70</x>
@@ -52,7 +52,7 @@
      <string>Edite os dados do usuário</string>
     </property>
    </widget>
-   <widget class="QLineEdit" name="lineEdit">
+   <widget class="QLineEdit" name="novo_usuario">
     <property name="geometry">
      <rect>
       <x>80</x>
@@ -70,7 +70,7 @@ padding: 8px;</string>
      <string>Novo usuário</string>
     </property>
    </widget>
-   <widget class="QLineEdit" name="lineEdit_2">
+   <widget class="QLineEdit" name="nova_senha">
     <property name="geometry">
      <rect>
       <x>220</x>
@@ -88,7 +88,7 @@ padding: 8px;</string>
      <string>Nova senha</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton">
+   <widget class="QPushButton" name="btn_cancelar">
     <property name="geometry">
      <rect>
       <x>150</x>
@@ -116,7 +116,7 @@ border-radius: 15px;
      <string>CANCELAR</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_2">
+   <widget class="QPushButton" name="btn_salvar">
     <property name="geometry">
      <rect>
       <x>150</x>
@@ -147,10 +147,10 @@ border-radius: 15px;
   </widget>
  </widget>
  <tabstops>
-  <tabstop>lineEdit</tabstop>
-  <tabstop>lineEdit_2</tabstop>
-  <tabstop>pushButton_2</tabstop>
-  <tabstop>pushButton</tabstop>
+  <tabstop>novo_usuario</tabstop>
+  <tabstop>nova_senha</tabstop>
+  <tabstop>btn_salvar</tabstop>
+  <tabstop>btn_cancelar</tabstop>
  </tabstops>
  <resources/>
  <connections/>

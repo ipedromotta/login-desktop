@@ -29,7 +29,7 @@
    <string notr="true">background-color: rgb(57, 130, 195);</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QLabel" name="label">
+   <widget class="QLabel" name="lbl_crie_conta">
     <property name="geometry">
      <rect>
       <x>70</x>
@@ -47,7 +47,7 @@ font-weight: bold;</string>
      <string>Crie sua conta</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton">
+   <widget class="QPushButton" name="btn_cadastrar">
     <property name="geometry">
      <rect>
       <x>120</x>
@@ -77,7 +77,7 @@ border-radius: 15px;</string>
      <bool>true</bool>
     </property>
    </widget>
-   <widget class="QLineEdit" name="lineEdit">
+   <widget class="QLineEdit" name="usuario">
     <property name="geometry">
      <rect>
       <x>80</x>
@@ -97,7 +97,7 @@ padding-left: 7px;
      <string>Usuário</string>
     </property>
    </widget>
-   <widget class="QLineEdit" name="lineEdit_2">
+   <widget class="QLineEdit" name="senha">
     <property name="geometry">
      <rect>
       <x>80</x>
@@ -116,7 +116,7 @@ padding-left: 7px;</string>
      <string>Senha</string>
     </property>
    </widget>
-   <widget class="QLabel" name="label_4">
+   <widget class="QLabel" name="lbl_msg">
     <property name="geometry">
      <rect>
       <x>20</x>
@@ -135,7 +135,7 @@ font-weight: bold;
      <string/>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_2">
+   <widget class="QPushButton" name="btn_voltar">
     <property name="geometry">
      <rect>
       <x>120</x>
@@ -164,11 +164,11 @@ border-radius: 15px;
      <string>Voltar</string>
     </property>
    </widget>
-   <widget class="QLabel" name="label_5">
+   <widget class="QLabel" name="lbl_erro">
     <property name="geometry">
      <rect>
       <x>48</x>
-      <y>170</y>
+      <y>167</y>
       <width>241</width>
       <height>31</height>
      </rect>
@@ -183,20 +183,20 @@ font-weight: bold;
      <string/>
     </property>
    </widget>
-   <zorder>label</zorder>
-   <zorder>pushButton</zorder>
-   <zorder>lineEdit</zorder>
-   <zorder>lineEdit_2</zorder>
-   <zorder>pushButton_2</zorder>
-   <zorder>label_5</zorder>
-   <zorder>label_4</zorder>
+   <zorder>lbl_crie_conta</zorder>
+   <zorder>btn_cadastrar</zorder>
+   <zorder>usuario</zorder>
+   <zorder>senha</zorder>
+   <zorder>btn_voltar</zorder>
+   <zorder>lbl_erro</zorder>
+   <zorder>lbl_msg</zorder>
   </widget>
  </widget>
  <tabstops>
-  <tabstop>lineEdit</tabstop>
-  <tabstop>lineEdit_2</tabstop>
-  <tabstop>pushButton</tabstop>
-  <tabstop>pushButton_2</tabstop>
+  <tabstop>usuario</tabstop>
+  <tabstop>senha</tabstop>
+  <tabstop>btn_cadastrar</tabstop>
+  <tabstop>btn_voltar</tabstop>
  </tabstops>
  <resources/>
  <connections/>

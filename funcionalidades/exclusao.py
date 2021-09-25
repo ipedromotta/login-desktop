@@ -2,9 +2,9 @@ from .database import banco
 
 class Exclusao:
     
-    def ExcluirDados(self):
-        linha = self.tela_admin.tableWidget.currentRow()
-        self.tela_admin.tableWidget.removeRow(linha)
+    def excluir_dados(self):
+        linha = self.tela_admin.tbl_usuarios.currentRow()
+        self.tela_admin.tbl_usuarios.removeRow(linha)
 
         cursor = banco.cursor()
         cursor.execute("SELECT id FROM dados")

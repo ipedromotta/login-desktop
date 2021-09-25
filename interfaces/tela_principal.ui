@@ -29,7 +29,7 @@
    <string notr="true">background-color: rgb(57, 130, 195);</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QPushButton" name="pushButton">
+   <widget class="QPushButton" name="btn_entrar">
     <property name="geometry">
      <rect>
       <x>130</x>
@@ -60,7 +60,7 @@ color: white</string>
      <bool>true</bool>
     </property>
    </widget>
-   <widget class="QLineEdit" name="lineEdit">
+   <widget class="QLineEdit" name="usuario">
     <property name="geometry">
      <rect>
       <x>90</x>
@@ -79,7 +79,7 @@ padding-left: 7px;</string>
      <string>Usuário</string>
     </property>
    </widget>
-   <widget class="QLineEdit" name="lineEdit_2">
+   <widget class="QLineEdit" name="senha">
     <property name="geometry">
      <rect>
       <x>90</x>
@@ -98,7 +98,7 @@ padding-left: 7px;</string>
      <string>Senha</string>
     </property>
    </widget>
-   <widget class="QLabel" name="label">
+   <widget class="QLabel" name="lbl_cadastro">
     <property name="geometry">
      <rect>
       <x>138</x>
@@ -111,7 +111,7 @@ padding-left: 7px;</string>
      <string>Não é cadastrado?</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_2">
+   <widget class="QPushButton" name="btn_cadastrar">
     <property name="geometry">
      <rect>
       <x>135</x>
@@ -138,7 +138,7 @@ border-radius: 15px;
      <string>Cadastrar</string>
     </property>
    </widget>
-   <widget class="QLabel" name="label_2">
+   <widget class="QLabel" name="lbl_login">
     <property name="geometry">
      <rect>
       <x>110</x>
@@ -155,10 +155,10 @@ color: white;</string>
      <string>Faça o seu login</string>
     </property>
    </widget>
-   <widget class="QLabel" name="label_3">
+   <widget class="QLabel" name="lbl_erro">
     <property name="geometry">
      <rect>
-      <x>90</x>
+      <x>80</x>
       <y>165</y>
       <width>201</width>
       <height>21</height>
@@ -178,7 +178,7 @@ color: white;</string>
      <string/>
     </property>
    </widget>
-   <widget class="QLabel" name="label_4">
+   <widget class="QLabel" name="lbl_login_img">
     <property name="geometry">
      <rect>
       <x>50</x>
@@ -194,7 +194,7 @@ color: white;</string>
      <pixmap>login.png</pixmap>
     </property>
    </widget>
-   <widget class="QLabel" name="label_5">
+   <widget class="QLabel" name="lbl_senha_img">
     <property name="geometry">
      <rect>
       <x>50</x>
@@ -213,10 +213,10 @@ color: white;</string>
   </widget>
  </widget>
  <tabstops>
-  <tabstop>lineEdit</tabstop>
-  <tabstop>lineEdit_2</tabstop>
-  <tabstop>pushButton</tabstop>
-  <tabstop>pushButton_2</tabstop>
+  <tabstop>usuario</tabstop>
+  <tabstop>senha</tabstop>
+  <tabstop>btn_entrar</tabstop>
+  <tabstop>btn_cadastrar</tabstop>
  </tabstops>
  <resources/>
  <connections/>

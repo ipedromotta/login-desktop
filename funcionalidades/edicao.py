@@ -2,9 +2,9 @@ from .database import banco
 
 class Edicao:
 
-    def EditarDados(self):
+    def editar_dados(self):
         self.tela_editar.show()
-        linha = self.tela_admin.tableWidget.currentRow()
+        linha = self.tela_admin.tbl_usuarios.currentRow()
 
         cursor = banco.cursor()
         cursor.execute("SELECT id FROM dados")
@@ -14,5 +14,5 @@ class Edicao:
         usuario = cursor.fetchall()
         self.numero_id = valor_id
 
-        self.tela_editar.lineEdit.setText(str(usuario[0][1]))
-        self.tela_editar.lineEdit_2.setText(str(usuario[0][2]))
+        self.tela_editar.novo_usuario.setText(str(usuario[0][1]))
+        self.tela_editar.nova_senha.setText(str(usuario[0][2]))

@@ -10,17 +10,21 @@ class Telas:
         self.tela_admin = uic.loadUi("./interfaces/tela_admin.ui")
         self.tela_editar = uic.loadUi("./interfaces/tela_editar.ui")
 
-    def TelaAdmin(self):
+    def tela_adm(self):
         self.tela_admin.show()
         cursor = banco.cursor()
         query = "SELECT * FROM dados"
         cursor.execute(query)
         dados_lidos = cursor.fetchall()
 
-        self.tela_admin.tableWidget.setRowCount(len(dados_lidos))
-        self.tela_admin.tableWidget.setColumnCount(3)
+        self.tela_admin.tbl_usuarios.setRowCount(len(dados_lidos))
+        self.tela_admin.tbl_usuarios.setColumnCount(3)
 
         for linha in range(0, len(dados_lidos)):
             for coluna in range(0, 3):
-                self.tela_admin.tableWidget.setItem(
+                self.tela_admin.tbl_usuarios.setItem(
                     linha, coluna, QtWidgets.QTableWidgetItem(str(dados_lidos[linha][coluna])))
+    
+    def tela_cadastrar(self):
+        self.tela_principal.close()
+        self.tela_cadastro.show()
