@@ -18,8 +18,8 @@ Para desenvolver a interface do sistema foi utilizado a biblioteca PyQt5 com o Q
   <img src="https://github.com/ipedromotta/Login-Python-MySQL/blob/main/preview/example3.png" height="300">
 </p>
 <p align="center"> 
-Foi criado um login especial para abrir uma janela para a manipulação de dados diretamente da aplicação. Para ter acesso a essa
-tela basta criar um cadastro com usuario admin e senha admin e logar normalmente.
+Existe uma janela para a manipulação de dados diretamente da aplicação. Para ter acesso a essa
+tela basta criar um cadastro com a coluna bl_adm como true.
 </p>
 <p align="center">
   <img src="https://github.com/ipedromotta/Login-Python-MySQL/blob/main/preview/example4.png" height="300">
