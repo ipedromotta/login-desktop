@@ -39,6 +39,6 @@ class AdminModel:
         try:
             cursor = conn.cursor()
             cursor.execute("DELETE FROM dados WHERE id =" + str(id))
-            cursor.commit()
+            conn.commit()
         except Exception as ex:
             print(f'Erro ao deletar: {ex}')
