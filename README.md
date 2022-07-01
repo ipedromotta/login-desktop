@@ -2,30 +2,21 @@
 <img src="https://github.com/ipedromotta/Python/blob/main/logo.png" width="50"><br>Sistema de login Python/MySQL
 </h1>
 
-## :page_facing_up: Sobre #
+## 📄 Sobre #
 
-<p align="center"> 
+<p> 
+Este é um sistema de login desktop que faz CRUD.<br>
 Para desenvolver a interface do sistema foi utilizado a biblioteca PyQt5 com o QtDesigner.
 </p>
-<p align="center">
- <img src="https://github.com/ipedromotta/Login-Python-MySQL/blob/main/preview/example1.png" height="300">
- <img src="https://github.com/ipedromotta/Login-Python-MySQL/blob/main/preview/example2.png" height="300">
+<p>
+Existe uma janela para a manipulação de dados diretamente da aplicação. Para ter acesso a essa tela basta criar um usuario com a coluna bl_adm como true.
 </p>
-<p align="center">
-  É possível criar novas contas na tela de cadastro
+<p>
+A estrutura de banco de dados já está pronta no arquivo db_login.sql. Para fazer a configuração do banco na aplicação basta abrir o arquivo .editorconfig e colocar todas as configurações do banco.
 </p>
-<p align="center">
-  <img src="https://github.com/ipedromotta/Login-Python-MySQL/blob/main/preview/example3.png" height="300">
+<p>
+Após fazer a configuração basta executar o arquivo main.py e a aplicação irá executar normalmente.
 </p>
-<p align="center"> 
-Existe uma janela para a manipulação de dados diretamente da aplicação. Para ter acesso a essa
-tela basta criar um cadastro com a coluna bl_adm como true.
-</p>
-<p align="center">
-  <img src="https://github.com/ipedromotta/Login-Python-MySQL/blob/main/preview/example4.png" height="300">
-  <img src="https://github.com/ipedromotta/Login-Python-MySQL/blob/main/preview/example5.png" width="300">
-</p>
-
 
 ## 🛠️ Tecnologias utilizadas #
 
