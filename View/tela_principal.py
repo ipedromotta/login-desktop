@@ -10,6 +10,8 @@
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 
+from .resources import resourcesLogin
+
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
@@ -20,54 +22,71 @@ class Ui_MainWindow(object):
         MainWindow.setStyleSheet("background-color: rgb(57, 130, 195);")
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
-        self.btn_entrar = QtWidgets.QPushButton(self.centralwidget)
-        self.btn_entrar.setGeometry(QtCore.QRect(130, 195, 101, 41))
-        font = QtGui.QFont()
-        font.setPointSize(14)
-        font.setBold(False)
-        font.setWeight(50)
-        self.btn_entrar.setFont(font)
-        self.btn_entrar.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
-        self.btn_entrar.setStyleSheet("background-color: #6EC8DB;\n"
-"border-radius: 15px;\n"
-"color: white")
-        self.btn_entrar.setDefault(True)
-        self.btn_entrar.setObjectName("btn_entrar")
-        self.usuario = QtWidgets.QLineEdit(self.centralwidget)
-        self.usuario.setGeometry(QtCore.QRect(90, 65, 191, 31))
-        self.usuario.setStyleSheet("background-color: rgb(255,255,255);\n"
-"border-radius: 15px;\n"
-"padding: 5px;\n"
-"padding-left: 7px;")
-        self.usuario.setObjectName("usuario")
-        self.senha = QtWidgets.QLineEdit(self.centralwidget)
-        self.senha.setGeometry(QtCore.QRect(90, 125, 191, 31))
-        self.senha.setStyleSheet("background-color: rgb(255,255,255);\n"
-"border-radius: 15px;\n"
-"padding: 5px;\n"
-"padding-left: 7px;")
-        self.senha.setObjectName("senha")
-        self.lbl_cadastro = QtWidgets.QLabel(self.centralwidget)
-        self.lbl_cadastro.setGeometry(QtCore.QRect(138, 295, 91, 17))
-        self.lbl_cadastro.setObjectName("lbl_cadastro")
-        self.btn_cadastrar = QtWidgets.QPushButton(self.centralwidget)
-        self.btn_cadastrar.setGeometry(QtCore.QRect(135, 325, 89, 31))
+        self.verticalLayout = QtWidgets.QVBoxLayout(self.centralwidget)
+        self.verticalLayout.setContentsMargins(9, 9, -1, -1)
+        self.verticalLayout.setObjectName("verticalLayout")
+        self.lbl_login = QtWidgets.QLabel(self.centralwidget)
         font = QtGui.QFont()
         font.setBold(True)
-        font.setWeight(75)
-        self.btn_cadastrar.setFont(font)
-        self.btn_cadastrar.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
-        self.btn_cadastrar.setStyleSheet("background-color: rgb(237, 212, 0);\n"
-"border-radius: 15px;\n"
-"")
-        self.btn_cadastrar.setObjectName("btn_cadastrar")
-        self.lbl_login = QtWidgets.QLabel(self.centralwidget)
-        self.lbl_login.setGeometry(QtCore.QRect(110, 15, 161, 31))
+        self.lbl_login.setFont(font)
         self.lbl_login.setStyleSheet("font-size: 16pt;\n"
 "color: white;")
+        self.lbl_login.setAlignment(QtCore.Qt.AlignCenter)
         self.lbl_login.setObjectName("lbl_login")
+        self.verticalLayout.addWidget(self.lbl_login)
+        self.inputWidget = QtWidgets.QWidget(self.centralwidget)
+        self.inputWidget.setObjectName("inputWidget")
+        self.formLayout = QtWidgets.QFormLayout(self.inputWidget)
+        self.formLayout.setLabelAlignment(QtCore.Qt.AlignCenter)
+        self.formLayout.setFormAlignment(QtCore.Qt.AlignCenter)
+        self.formLayout.setObjectName("formLayout")
+        self.usuario = QtWidgets.QLineEdit(self.inputWidget)
+        self.usuario.setMaximumSize(QtCore.QSize(170, 50))
+        self.usuario.setStyleSheet("*{\n"
+"background-color: #fff;\n"
+"border-radius: 15px;\n"
+"padding: 5px;\n"
+"padding-left: 7px;\n"
+"}\n"
+"QLineEdit:focus{\n"
+"border: 2px solid #edd400;\n"
+"}")
+        self.usuario.setMaxLength(20)
+        self.usuario.setObjectName("usuario")
+        self.formLayout.setWidget(0, QtWidgets.QFormLayout.FieldRole, self.usuario)
+        self.lbl_login_img = QtWidgets.QLabel(self.inputWidget)
+        self.lbl_login_img.setMaximumSize(QtCore.QSize(30, 30))
+        self.lbl_login_img.setText("")
+        self.lbl_login_img.setPixmap(QtGui.QPixmap(":/icons/img/icoLogin.png"))
+        self.lbl_login_img.setScaledContents(True)
+        self.lbl_login_img.setAlignment(QtCore.Qt.AlignCenter)
+        self.lbl_login_img.setObjectName("lbl_login_img")
+        self.formLayout.setWidget(0, QtWidgets.QFormLayout.LabelRole, self.lbl_login_img)
+        self.senha = QtWidgets.QLineEdit(self.inputWidget)
+        self.senha.setMaximumSize(QtCore.QSize(170, 50))
+        self.senha.setStyleSheet("*{\n"
+"background-color: #fff;\n"
+"border-radius: 15px;\n"
+"padding: 5px;\n"
+"padding-left: 7px;\n"
+"}\n"
+"QLineEdit:focus{\n"
+"border: 2px solid #edd400;\n"
+"}")
+        self.senha.setMaxLength(20)
+        self.senha.setEchoMode(QtWidgets.QLineEdit.Password)
+        self.senha.setObjectName("senha")
+        self.formLayout.setWidget(1, QtWidgets.QFormLayout.FieldRole, self.senha)
+        self.lbl_senha_img = QtWidgets.QLabel(self.inputWidget)
+        self.lbl_senha_img.setMaximumSize(QtCore.QSize(30, 30))
+        self.lbl_senha_img.setText("")
+        self.lbl_senha_img.setPixmap(QtGui.QPixmap(":/icons/img/icoSenha.png"))
+        self.lbl_senha_img.setScaledContents(True)
+        self.lbl_senha_img.setObjectName("lbl_senha_img")
+        self.formLayout.setWidget(1, QtWidgets.QFormLayout.LabelRole, self.lbl_senha_img)
+        self.verticalLayout.addWidget(self.inputWidget)
         self.lbl_erro = QtWidgets.QLabel(self.centralwidget)
-        self.lbl_erro.setGeometry(QtCore.QRect(80, 165, 201, 21))
+        self.lbl_erro.setMaximumSize(QtCore.QSize(16777215, 25))
         font = QtGui.QFont()
         font.setPointSize(12)
         font.setBold(True)
@@ -75,19 +94,64 @@ class Ui_MainWindow(object):
         self.lbl_erro.setFont(font)
         self.lbl_erro.setStyleSheet("color: rgb(237, 212, 0);")
         self.lbl_erro.setText("")
+        self.lbl_erro.setAlignment(QtCore.Qt.AlignCenter)
         self.lbl_erro.setObjectName("lbl_erro")
-        self.lbl_login_img = QtWidgets.QLabel(self.centralwidget)
-        self.lbl_login_img.setGeometry(QtCore.QRect(50, 60, 31, 40))
-        self.lbl_login_img.setText("")
-        self.lbl_login_img.setPixmap(QtGui.QPixmap("login.png"))
-        self.lbl_login_img.setObjectName("lbl_login_img")
-        self.lbl_senha_img = QtWidgets.QLabel(self.centralwidget)
-        self.lbl_senha_img.setGeometry(QtCore.QRect(50, 120, 31, 40))
-        self.lbl_senha_img.setText("")
-        self.lbl_senha_img.setPixmap(QtGui.QPixmap("senha.png"))
-        self.lbl_senha_img.setObjectName("lbl_senha_img")
-        self.senha.setEchoMode(QtWidgets.QLineEdit.Password)
+        self.verticalLayout.addWidget(self.lbl_erro)
+        self.btn_entrar = QtWidgets.QPushButton(self.centralwidget)
+        self.btn_entrar.setEnabled(True)
+        self.btn_entrar.setMinimumSize(QtCore.QSize(100, 40))
+        self.btn_entrar.setMaximumSize(QtCore.QSize(100, 40))
+        font = QtGui.QFont()
+        font.setPointSize(14)
+        font.setBold(False)
+        font.setWeight(50)
+        self.btn_entrar.setFont(font)
+        self.btn_entrar.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.btn_entrar.setLayoutDirection(QtCore.Qt.LeftToRight)
+        self.btn_entrar.setAutoFillBackground(False)
+        self.btn_entrar.setStyleSheet("*{\n"
+"background-color: #6EC8DB;\n"
+"border-radius: 15px;\n"
+"color: white;\n"
+"}\n"
+"QPushButton:hover{\n"
+"background-color:#60afbf;\n"
+"transition: 1s;\n"
+"}")
+        self.btn_entrar.setCheckable(False)
+        self.btn_entrar.setChecked(False)
+        self.btn_entrar.setAutoRepeat(False)
+        self.btn_entrar.setDefault(True)
+        self.btn_entrar.setFlat(False)
+        self.btn_entrar.setObjectName("btn_entrar")
+        self.verticalLayout.addWidget(self.btn_entrar, 0, QtCore.Qt.AlignHCenter)
+        self.lbl_cadastro = QtWidgets.QLabel(self.centralwidget)
+        self.lbl_cadastro.setAlignment(QtCore.Qt.AlignBottom|QtCore.Qt.AlignHCenter)
+        self.lbl_cadastro.setObjectName("lbl_cadastro")
+        self.verticalLayout.addWidget(self.lbl_cadastro)
+        self.btn_cadastrar = QtWidgets.QPushButton(self.centralwidget)
+        self.btn_cadastrar.setMinimumSize(QtCore.QSize(100, 30))
+        self.btn_cadastrar.setMaximumSize(QtCore.QSize(100, 30))
+        font = QtGui.QFont()
+        font.setBold(True)
+        font.setWeight(75)
+        self.btn_cadastrar.setFont(font)
+        self.btn_cadastrar.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.btn_cadastrar.setStyleSheet("*{\n"
+"background-color: #edd400;\n"
+"border-radius: 15px;\n"
+"}\n"
+"QPushButton:hover{\n"
+"background-color: #d1bc08;\n"
+"}\n"
+"\n"
+"")
+        self.btn_cadastrar.setObjectName("btn_cadastrar")
+        self.verticalLayout.addWidget(self.btn_cadastrar, 0, QtCore.Qt.AlignHCenter)
         MainWindow.setCentralWidget(self.centralwidget)
+
+        self.usuario.returnPressed.connect(self.btn_entrar.click)
+        self.senha.returnPressed.connect(self.btn_entrar.click)
 
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
@@ -98,9 +162,9 @@ class Ui_MainWindow(object):
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "Logon"))
-        self.btn_entrar.setText(_translate("MainWindow", "Entrar"))
+        self.lbl_login.setText(_translate("MainWindow", "Faça o seu login"))
         self.usuario.setPlaceholderText(_translate("MainWindow", "Usuário"))
         self.senha.setPlaceholderText(_translate("MainWindow", "Senha"))
+        self.btn_entrar.setText(_translate("MainWindow", "Entrar"))
         self.lbl_cadastro.setText(_translate("MainWindow", "Não é cadastrado?"))
         self.btn_cadastrar.setText(_translate("MainWindow", "Cadastrar"))
-        self.lbl_login.setText(_translate("MainWindow", "Faça o seu login"))
