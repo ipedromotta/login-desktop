@@ -1,0 +1,5 @@
+[Database]
+Host=localhost
+Database=usuarios
+User=root
+Password=

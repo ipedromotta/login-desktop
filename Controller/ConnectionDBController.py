@@ -1,15 +1,16 @@
 import mysql.connector
 
-host="localhost"
-user="root"
-passwd=""
-database="usuarios"
+from Model.Configuration import Configuration
 
-class ConectionDBController:
+
+
+class ConnectionDBController:
 
     @staticmethod
     def get_connection():
         try:
+            (host, database, user, passwd) = Configuration().Database
+
             cnxn = mysql.connector.connect(
                 host=host,
                 user=user,
