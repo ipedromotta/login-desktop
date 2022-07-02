@@ -19,4 +19,4 @@ class ConnectionDBController:
             )
             return cnxn
         except Exception as ex:
-            return ex
+            raise ex
