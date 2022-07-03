@@ -1,4 +1,4 @@
-from PyQt5 import QtWidgets
+from PyQt5 import QtWidgets, QtCore
 
 from Controller.AcoesController import AcoesController
 from Controller.ConnectionDBController import ConnectionDBController
@@ -42,6 +42,7 @@ class AcessoController:
         else:
             self.__tela_logado.setupUi(tela)
             self.__tela_logado.btn_logout.clicked.connect(lambda: self.logout(tela))
+            self.__tela_logado.lbl_nome.setText(f"Olá, {usuario.Nome}!")
             tela.show()
 
     def logout(self, tela):
@@ -54,7 +55,7 @@ class AcessoController:
     def tela_de_cadastro(self, tela):
         tela.close()
         self.__tela_cadastro.setupUi(tela)
-        self.__tela_cadastro.btn_cadastrar.clicked.connect(lambda: self.__acoes.cadastrar(self.__cnxn, self.__tela_cadastro, self.__tela_cadastro.usuario.text(), self.__tela_cadastro.senha.text()))
+        self.__tela_cadastro.btn_cadastrar.clicked.connect(lambda: self.__acoes.cadastrar(self.__cnxn, self.__tela_cadastro, self.__tela_cadastro.nome.text(), self.__tela_cadastro.usuario.text(), self.__tela_cadastro.senha.text()))
         self.__tela_cadastro.btn_voltar.clicked.connect(lambda: self.logout(tela))
         tela.show()
 
@@ -70,8 +71,9 @@ class AcessoController:
 
         for linha in range(0, len(dados_lidos)):
             for coluna in range(0, 3):
-                self.__tela_admin.tbl_usuarios.setItem(
-                    linha, coluna, QtWidgets.QTableWidgetItem(str(dados_lidos[linha][coluna])))
+                item = QtWidgets.QTableWidgetItem(str(dados_lidos[linha][coluna]))
+                item.setTextAlignment(QtCore.Qt.AlignVCenter | QtCore.Qt.AlignHCenter)
+                self.__tela_admin.tbl_usuarios.setItem(linha, coluna, item)
 
         self.__tela_admin.btn_editar.clicked.connect(lambda: self.__acoes.editar_dados(self.__cnxn, self.__tela_edicao, self.__tela_admin, tela, self.tela_adm))
         self.__tela_admin.btn_excluir.clicked.connect(lambda: self.__acoes.excluir_dados(self.__cnxn, self.__tela_admin))

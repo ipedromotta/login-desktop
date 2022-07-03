@@ -1,3 +1,6 @@
+from Controller.CriptografiaController import CriptografiaController
+
+
 class AdminModel:
 
     @staticmethod
@@ -16,7 +19,7 @@ class AdminModel:
     def consultar_usuario(id, conn):
         try:
             cursor = conn.cursor()
-            cursor.execute("SELECT * FROM dados WHERE id =" + str(id))
+            cursor.execute("SELECT * FROM dados WHERE ID =" + str(id))
             usuario = cursor.fetchall()
             
             return usuario
@@ -24,21 +27,27 @@ class AdminModel:
             return None
 
     @staticmethod
-    def atualizar_usuario(usuario, senha, numero_id, conn):
+    def atualizar_usuario(nome, usuario, senha, admin, numero_id, conn):
         try:
+            senha_criptografada = CriptografiaController().criptografar(senha)
+            if not senha_criptografada:
+                return False
+
             cursor = conn.cursor()
-            cursor.execute("UPDATE dados SET usuario = '{}', senha = '{}' WHERE id = {}".format(
-                        usuario, senha, numero_id))
+            cursor.execute("UPDATE dados SET NOME = '{}', USUARIO = '{}', SENHA = '{}', BL_ADM = {} WHERE ID = {}".format(
+                        nome, usuario, senha_criptografada, admin, numero_id))
             conn.commit()
+            return True
 
         except Exception as ex:
             print(ex)
+            return False
 
     @staticmethod
     def excluir_usuario(id, conn):
         try:
             cursor = conn.cursor()
-            cursor.execute("DELETE FROM dados WHERE id =" + str(id))
+            cursor.execute("DELETE FROM dados WHERE ID =" + str(id))
             conn.commit()
         except Exception as ex:
             print(f'Erro ao deletar: {ex}')
