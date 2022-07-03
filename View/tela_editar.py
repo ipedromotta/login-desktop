@@ -12,72 +12,159 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 
 
 class Ui_TelaEdicao(object):
-    def setupUi(self, MainWindow):
-        MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(415, 220)
-        MainWindow.setMinimumSize(QtCore.QSize(415, 220))
-        MainWindow.setMaximumSize(QtCore.QSize(415, 220))
-        MainWindow.setStyleSheet("background-color: rgb(57, 130, 195);")
-        self.centralwidget = QtWidgets.QWidget(MainWindow)
+    def setupUi(self, TelaEdicao):
+        TelaEdicao.setObjectName("TelaEdicao")
+        TelaEdicao.resize(347, 250)
+        TelaEdicao.setMinimumSize(QtCore.QSize(347, 250))
+        TelaEdicao.setMaximumSize(QtCore.QSize(347, 250))
+        TelaEdicao.setStyleSheet("background-color: rgb(57, 130, 195);")
+        self.centralwidget = QtWidgets.QWidget(TelaEdicao)
         self.centralwidget.setObjectName("centralwidget")
+        self.verticalLayout = QtWidgets.QVBoxLayout(self.centralwidget)
+        self.verticalLayout.setObjectName("verticalLayout")
         self.lbl_edite_dados = QtWidgets.QLabel(self.centralwidget)
-        self.lbl_edite_dados.setGeometry(QtCore.QRect(70, 10, 271, 31))
         font = QtGui.QFont()
         font.setPointSize(16)
         font.setBold(True)
         font.setWeight(75)
         self.lbl_edite_dados.setFont(font)
         self.lbl_edite_dados.setStyleSheet("color: white;")
+        self.lbl_edite_dados.setAlignment(QtCore.Qt.AlignCenter)
         self.lbl_edite_dados.setObjectName("lbl_edite_dados")
+        self.verticalLayout.addWidget(self.lbl_edite_dados)
+        self.novo_nome = QtWidgets.QLineEdit(self.centralwidget)
+        self.novo_nome.setMinimumSize(QtCore.QSize(170, 30))
+        self.novo_nome.setMaximumSize(QtCore.QSize(170, 16777215))
+        self.novo_nome.setStyleSheet("*{\n"
+"background-color: #fff;\n"
+"border-radius: 15px;\n"
+"padding: 5px;\n"
+"padding-left: 7px;\n"
+"}\n"
+"QLineEdit:focus{\n"
+"border: 2px solid #edd400;\n"
+"}")
+        self.novo_nome.setMaxLength(20)
+        self.novo_nome.setObjectName("novo_nome")
+        self.verticalLayout.addWidget(self.novo_nome, 0, QtCore.Qt.AlignHCenter)
         self.novo_usuario = QtWidgets.QLineEdit(self.centralwidget)
-        self.novo_usuario.setGeometry(QtCore.QRect(80, 60, 113, 31))
-        self.novo_usuario.setStyleSheet("background-color: white;\n"
+        self.novo_usuario.setMinimumSize(QtCore.QSize(170, 30))
+        self.novo_usuario.setMaximumSize(QtCore.QSize(170, 16777215))
+        self.novo_usuario.setStyleSheet("*{\n"
+"background-color: #fff;\n"
 "border-radius: 15px;\n"
-"padding: 8px;")
+"padding: 5px;\n"
+"padding-left: 7px;\n"
+"}\n"
+"QLineEdit:focus{\n"
+"border: 2px solid #edd400;\n"
+"}")
+        self.novo_usuario.setMaxLength(20)
         self.novo_usuario.setObjectName("novo_usuario")
+        self.verticalLayout.addWidget(self.novo_usuario, 0, QtCore.Qt.AlignHCenter)
         self.nova_senha = QtWidgets.QLineEdit(self.centralwidget)
-        self.nova_senha.setGeometry(QtCore.QRect(220, 60, 113, 31))
-        self.nova_senha.setStyleSheet("background-color: white;\n"
+        self.nova_senha.setMinimumSize(QtCore.QSize(170, 30))
+        self.nova_senha.setMaximumSize(QtCore.QSize(170, 16777215))
+        self.nova_senha.setStyleSheet("*{\n"
+"background-color: #fff;\n"
 "border-radius: 15px;\n"
-"padding: 8px;")
+"padding: 5px;\n"
+"padding-left: 7px;\n"
+"}\n"
+"QLineEdit:focus{\n"
+"border: 2px solid #edd400;\n"
+"}")
+        self.nova_senha.setMaxLength(20)
+        self.nova_senha.setEchoMode(QtWidgets.QLineEdit.Password)
         self.nova_senha.setObjectName("nova_senha")
-        self.btn_cancelar = QtWidgets.QPushButton(self.centralwidget)
-        self.btn_cancelar.setGeometry(QtCore.QRect(150, 169, 101, 31))
+        self.verticalLayout.addWidget(self.nova_senha, 0, QtCore.Qt.AlignHCenter)
+        self.bl_admin = QtWidgets.QCheckBox(self.centralwidget)
         font = QtGui.QFont()
-        font.setPointSize(11)
-        font.setBold(False)
-        font.setWeight(50)
-        self.btn_cancelar.setFont(font)
-        self.btn_cancelar.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
-        self.btn_cancelar.setStyleSheet("background-color: rgb(237, 212, 0);\n"
-"border-radius: 15px;\n"
+        font.setPointSize(10)
+        font.setBold(True)
+        font.setWeight(75)
+        self.bl_admin.setFont(font)
+        self.bl_admin.setStyleSheet("*{\n"
+"color:#fff;\n"
+"}\n"
+"QCheckBox::Checked{\n"
+"    color: #edd400;\n"
+"}")
+        self.bl_admin.setObjectName("bl_admin")
+        self.verticalLayout.addWidget(self.bl_admin, 0, QtCore.Qt.AlignHCenter)
+        self.lbl_erro = QtWidgets.QLabel(self.centralwidget)
+        self.lbl_erro.setStyleSheet("color: rgb(237, 212, 0);;\n"
+"font-size: 13pt;\n"
+"font-weight: bold;\n"
 "")
-        self.btn_cancelar.setObjectName("btn_cancelar")
-        self.btn_salvar = QtWidgets.QPushButton(self.centralwidget)
-        self.btn_salvar.setGeometry(QtCore.QRect(150, 120, 101, 31))
+        self.lbl_erro.setText("")
+        self.lbl_erro.setTextFormat(QtCore.Qt.AutoText)
+        self.lbl_erro.setScaledContents(False)
+        self.lbl_erro.setAlignment(QtCore.Qt.AlignCenter)
+        self.lbl_erro.setWordWrap(True)
+        self.lbl_erro.setObjectName("lbl_erro")
+        self.verticalLayout.addWidget(self.lbl_erro)
+        self.horizontalWidget = QtWidgets.QWidget(self.centralwidget)
+        self.horizontalWidget.setObjectName("horizontalWidget")
+        self.horizontalLayout_2 = QtWidgets.QHBoxLayout(self.horizontalWidget)
+        self.horizontalLayout_2.setObjectName("horizontalLayout_2")
+        self.btn_salvar = QtWidgets.QPushButton(self.horizontalWidget)
+        self.btn_salvar.setMinimumSize(QtCore.QSize(30, 30))
+        self.btn_salvar.setMaximumSize(QtCore.QSize(150, 16777215))
         font = QtGui.QFont()
         font.setPointSize(11)
         font.setBold(False)
         font.setWeight(50)
         self.btn_salvar.setFont(font)
         self.btn_salvar.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
-        self.btn_salvar.setStyleSheet("background-color: #6EC8DB;\n"
+        self.btn_salvar.setStyleSheet("*{\n"
+"background-color: #6EC8DB;\n"
 "border-radius: 15px;\n"
-"")
+"color: white;\n"
+"}\n"
+"QPushButton:hover{\n"
+"background-color:#60afbf;\n"
+"}")
         self.btn_salvar.setObjectName("btn_salvar")
-        MainWindow.setCentralWidget(self.centralwidget)
+        self.horizontalLayout_2.addWidget(self.btn_salvar)
+        self.btn_cancelar = QtWidgets.QPushButton(self.horizontalWidget)
+        self.btn_cancelar.setMinimumSize(QtCore.QSize(0, 30))
+        self.btn_cancelar.setMaximumSize(QtCore.QSize(150, 16777215))
+        font = QtGui.QFont()
+        font.setPointSize(11)
+        font.setBold(False)
+        font.setWeight(50)
+        self.btn_cancelar.setFont(font)
+        self.btn_cancelar.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.btn_cancelar.setStyleSheet("*{\n"
+"background-color: #df4759;\n"
+"border-radius: 15px;\n"
+"color: #fff;\n"
+"}\n"
+"QPushButton:hover{\n"
+"background-color: #ba3847;\n"
+"}\n"
+"\n"
+"")
+        self.btn_cancelar.setObjectName("btn_cancelar")
+        self.horizontalLayout_2.addWidget(self.btn_cancelar)
+        self.verticalLayout.addWidget(self.horizontalWidget)
+        TelaEdicao.setCentralWidget(self.centralwidget)
 
-        self.retranslateUi(MainWindow)
-        QtCore.QMetaObject.connectSlotsByName(MainWindow)
-        MainWindow.setTabOrder(self.novo_usuario, self.nova_senha)
-        MainWindow.setTabOrder(self.nova_senha, self.btn_salvar)
-        MainWindow.setTabOrder(self.btn_salvar, self.btn_cancelar)
+        self.novo_nome.returnPressed.connect(self.btn_salvar.click)
+        self.novo_usuario.returnPressed.connect(self.btn_salvar.click)
+        self.nova_senha.returnPressed.connect(self.btn_salvar.click)
 
-    def retranslateUi(self, MainWindow):
+        self.retranslateUi(TelaEdicao)
+        QtCore.QMetaObject.connectSlotsByName(TelaEdicao)
+
+    def retranslateUi(self, TelaEdicao):
         _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "Edição"))
-        self.lbl_edite_dados.setText(_translate("MainWindow", "Edite os dados do usuário"))
-        self.novo_usuario.setPlaceholderText(_translate("MainWindow", "Novo usuário"))
-        self.nova_senha.setPlaceholderText(_translate("MainWindow", "Nova senha"))
-        self.btn_cancelar.setText(_translate("MainWindow", "CANCELAR"))
-        self.btn_salvar.setText(_translate("MainWindow", "SALVAR"))
+        TelaEdicao.setWindowTitle(_translate("TelaEdicao", "Edição"))
+        self.lbl_edite_dados.setText(_translate("TelaEdicao", "Edite os dados do usuário"))
+        self.novo_nome.setPlaceholderText(_translate("TelaEdicao", "Novo nome"))
+        self.novo_usuario.setPlaceholderText(_translate("TelaEdicao", "Novo usuário"))
+        self.nova_senha.setPlaceholderText(_translate("TelaEdicao", "Nova senha"))
+        self.bl_admin.setText(_translate("TelaEdicao", "Administrador"))
+        self.btn_salvar.setText(_translate("TelaEdicao", "SALVAR"))
+        self.btn_cancelar.setText(_translate("TelaEdicao", "CANCELAR"))

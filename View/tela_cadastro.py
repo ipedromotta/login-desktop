@@ -12,97 +12,139 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 
 
 class Ui_TelaCadastro(object):
-    def setupUi(self, MainWindow):
-        MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(335, 341)
-        MainWindow.setMinimumSize(QtCore.QSize(335, 341))
-        MainWindow.setMaximumSize(QtCore.QSize(335, 341))
-        MainWindow.setStyleSheet("background-color: rgb(57, 130, 195);")
-        self.centralwidget = QtWidgets.QWidget(MainWindow)
+    def setupUi(self, TelaCadastro):
+        TelaCadastro.setObjectName("TelaCadastro")
+        TelaCadastro.resize(347, 369)
+        TelaCadastro.setMinimumSize(QtCore.QSize(347, 369))
+        TelaCadastro.setMaximumSize(QtCore.QSize(347, 369))
+        TelaCadastro.setStyleSheet("background-color: rgb(57, 130, 195);")
+        self.centralwidget = QtWidgets.QWidget(TelaCadastro)
         self.centralwidget.setObjectName("centralwidget")
+        self.verticalLayout = QtWidgets.QVBoxLayout(self.centralwidget)
+        self.verticalLayout.setObjectName("verticalLayout")
         self.lbl_crie_conta = QtWidgets.QLabel(self.centralwidget)
-        self.lbl_crie_conta.setGeometry(QtCore.QRect(70, 10, 201, 51))
         self.lbl_crie_conta.setStyleSheet("font-size: 20pt;\n"
 "color: white;\n"
 "font-weight: bold;")
+        self.lbl_crie_conta.setAlignment(QtCore.Qt.AlignCenter)
         self.lbl_crie_conta.setObjectName("lbl_crie_conta")
+        self.verticalLayout.addWidget(self.lbl_crie_conta)
+        self.nome = QtWidgets.QLineEdit(self.centralwidget)
+        self.nome.setMinimumSize(QtCore.QSize(170, 30))
+        self.nome.setMaximumSize(QtCore.QSize(170, 30))
+        self.nome.setStyleSheet("*{\n"
+"background-color: #fff;\n"
+"border-radius: 15px;\n"
+"padding: 5px;\n"
+"padding-left: 7px;\n"
+"}\n"
+"QLineEdit:focus{\n"
+"border: 2px solid #edd400;\n"
+"}")
+        self.nome.setMaxLength(20)
+        self.nome.setObjectName("nome")
+        self.verticalLayout.addWidget(self.nome, 0, QtCore.Qt.AlignHCenter)
+        self.usuario = QtWidgets.QLineEdit(self.centralwidget)
+        self.usuario.setMinimumSize(QtCore.QSize(170, 30))
+        self.usuario.setMaximumSize(QtCore.QSize(170, 30))
+        self.usuario.setStyleSheet("*{\n"
+"background-color: #fff;\n"
+"border-radius: 15px;\n"
+"padding: 5px;\n"
+"padding-left: 7px;\n"
+"}\n"
+"QLineEdit:focus{\n"
+"border: 2px solid #edd400;\n"
+"}")
+        self.usuario.setMaxLength(20)
+        self.usuario.setObjectName("usuario")
+        self.verticalLayout.addWidget(self.usuario, 0, QtCore.Qt.AlignHCenter)
+        self.senha = QtWidgets.QLineEdit(self.centralwidget)
+        self.senha.setMinimumSize(QtCore.QSize(170, 30))
+        self.senha.setMaximumSize(QtCore.QSize(170, 30))
+        self.senha.setStyleSheet("*{\n"
+"background-color: #fff;\n"
+"border-radius: 15px;\n"
+"padding: 5px;\n"
+"padding-left: 7px;\n"
+"}\n"
+"QLineEdit:focus{\n"
+"border: 2px solid #edd400;\n"
+"}")
+        self.senha.setMaxLength(20)
+        self.senha.setEchoMode(QtWidgets.QLineEdit.Password)
+        self.senha.setObjectName("senha")
+        self.verticalLayout.addWidget(self.senha, 0, QtCore.Qt.AlignHCenter)
+        self.lbl_erro = QtWidgets.QLabel(self.centralwidget)
+        self.lbl_erro.setStyleSheet("color: rgb(237, 212, 0);;\n"
+"font-size: 13pt;\n"
+"font-weight: bold;\n"
+"")
+        self.lbl_erro.setText("")
+        self.lbl_erro.setTextFormat(QtCore.Qt.AutoText)
+        self.lbl_erro.setScaledContents(False)
+        self.lbl_erro.setAlignment(QtCore.Qt.AlignHCenter|QtCore.Qt.AlignTop)
+        self.lbl_erro.setWordWrap(True)
+        self.lbl_erro.setObjectName("lbl_erro")
+        self.verticalLayout.addWidget(self.lbl_erro)
         self.btn_cadastrar = QtWidgets.QPushButton(self.centralwidget)
-        self.btn_cadastrar.setGeometry(QtCore.QRect(120, 202, 101, 41))
+        self.btn_cadastrar.setMinimumSize(QtCore.QSize(150, 30))
+        self.btn_cadastrar.setMaximumSize(QtCore.QSize(150, 16777215))
         font = QtGui.QFont()
         font.setPointSize(12)
         font.setBold(True)
         font.setWeight(75)
         self.btn_cadastrar.setFont(font)
         self.btn_cadastrar.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
-        self.btn_cadastrar.setStyleSheet("background-color: rgb(237, 212, 0);\n"
-"border-radius: 15px;")
+        self.btn_cadastrar.setStyleSheet("*{\n"
+"background-color: #edd400;\n"
+"border-radius: 15px;\n"
+"}\n"
+"QPushButton:hover{\n"
+"background-color: #d1bc08;\n"
+"}\n"
+"\n"
+"")
         self.btn_cadastrar.setDefault(True)
         self.btn_cadastrar.setObjectName("btn_cadastrar")
-        self.usuario = QtWidgets.QLineEdit(self.centralwidget)
-        self.usuario.setGeometry(QtCore.QRect(80, 70, 181, 31))
-        self.usuario.setStyleSheet("border-radius: 10px;\n"
-"background-color:white;\n"
-"padding: 4px;\n"
-"padding-left: 7px;\n"
-"")
-        self.usuario.setObjectName("usuario")
-        self.senha = QtWidgets.QLineEdit(self.centralwidget)
-        self.senha.setGeometry(QtCore.QRect(80, 130, 181, 31))
-        self.senha.setStyleSheet("border-radius: 10px;\n"
-"background-color:white;\n"
-"padding: 4px;\n"
-"padding-left: 7px;")
-        self.senha.setObjectName("senha")
-        self.senha.setEchoMode(QtWidgets.QLineEdit.Password)
-        self.lbl_msg = QtWidgets.QLabel(self.centralwidget)
-        self.lbl_msg.setGeometry(QtCore.QRect(20, 246, 291, 31))
-        self.lbl_msg.setStyleSheet("color: rgb(237, 212, 0);;\n"
-"font-size: 13pt;\n"
-"font-weight: bold;\n"
-"")
-        self.lbl_msg.setText("")
-        self.lbl_msg.setObjectName("lbl_msg")
+        self.verticalLayout.addWidget(self.btn_cadastrar, 0, QtCore.Qt.AlignHCenter)
         self.btn_voltar = QtWidgets.QPushButton(self.centralwidget)
-        self.btn_voltar.setGeometry(QtCore.QRect(120, 280, 101, 31))
+        self.btn_voltar.setMinimumSize(QtCore.QSize(150, 30))
+        self.btn_voltar.setMaximumSize(QtCore.QSize(150, 16777215))
         font = QtGui.QFont()
         font.setPointSize(12)
         font.setBold(True)
         font.setWeight(75)
         self.btn_voltar.setFont(font)
         self.btn_voltar.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
-        self.btn_voltar.setStyleSheet("background-color: #6EC8DB;\n"
-"color:white;\n"
+        self.btn_voltar.setStyleSheet("*{\n"
+"background-color: #6EC8DB;\n"
 "border-radius: 15px;\n"
-"")
+"color: white;\n"
+"}\n"
+"QPushButton:hover{\n"
+"background-color:#60afbf;\n"
+"}")
         self.btn_voltar.setObjectName("btn_voltar")
-        self.lbl_erro = QtWidgets.QLabel(self.centralwidget)
-        self.lbl_erro.setGeometry(QtCore.QRect(48, 167, 241, 31))
-        self.lbl_erro.setStyleSheet("color: rgb(237, 212, 0);;\n"
-"font-size: 13pt;\n"
-"font-weight: bold;\n"
-"")
-        self.lbl_erro.setText("")
-        self.lbl_erro.setObjectName("lbl_erro")
-        self.lbl_crie_conta.raise_()
-        self.btn_cadastrar.raise_()
-        self.usuario.raise_()
-        self.senha.raise_()
-        self.btn_voltar.raise_()
-        self.lbl_erro.raise_()
-        self.lbl_msg.raise_()
-        MainWindow.setCentralWidget(self.centralwidget)
+        self.verticalLayout.addWidget(self.btn_voltar, 0, QtCore.Qt.AlignHCenter)
+        TelaCadastro.setCentralWidget(self.centralwidget)
 
-        self.retranslateUi(MainWindow)
-        QtCore.QMetaObject.connectSlotsByName(MainWindow)
-        MainWindow.setTabOrder(self.usuario, self.senha)
-        MainWindow.setTabOrder(self.senha, self.btn_cadastrar)
-        MainWindow.setTabOrder(self.btn_cadastrar, self.btn_voltar)
+        self.nome.returnPressed.connect(self.btn_cadastrar.click)
+        self.usuario.returnPressed.connect(self.btn_cadastrar.click)
+        self.senha.returnPressed.connect(self.btn_cadastrar.click)
 
-    def retranslateUi(self, MainWindow):
+        self.retranslateUi(TelaCadastro)
+        QtCore.QMetaObject.connectSlotsByName(TelaCadastro)
+        TelaCadastro.setTabOrder(self.usuario, self.senha)
+        TelaCadastro.setTabOrder(self.senha, self.btn_cadastrar)
+        TelaCadastro.setTabOrder(self.btn_cadastrar, self.btn_voltar)
+
+    def retranslateUi(self, TelaCadastro):
         _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "Cadastre-se"))
-        self.lbl_crie_conta.setText(_translate("MainWindow", "Crie sua conta"))
-        self.btn_cadastrar.setText(_translate("MainWindow", "Cadastrar"))
-        self.usuario.setPlaceholderText(_translate("MainWindow", "Usuário"))
-        self.senha.setPlaceholderText(_translate("MainWindow", "Senha"))
-        self.btn_voltar.setText(_translate("MainWindow", "Voltar"))
+        TelaCadastro.setWindowTitle(_translate("TelaCadastro", "Cadastre-se"))
+        self.lbl_crie_conta.setText(_translate("TelaCadastro", "Crie sua conta"))
+        self.nome.setPlaceholderText(_translate("TelaCadastro", "Nome"))
+        self.usuario.setPlaceholderText(_translate("TelaCadastro", "Usuário"))
+        self.senha.setPlaceholderText(_translate("TelaCadastro", "Senha"))
+        self.btn_cadastrar.setText(_translate("TelaCadastro", "Cadastrar"))
+        self.btn_voltar.setText(_translate("TelaCadastro", "Voltar"))

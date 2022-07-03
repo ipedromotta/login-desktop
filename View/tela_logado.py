@@ -12,24 +12,42 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 
 
 class Ui_TelaLogado(object):
-    def setupUi(self, MainWindow):
-        MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(347, 413)
-        MainWindow.setMinimumSize(QtCore.QSize(347, 413))
-        MainWindow.setMaximumSize(QtCore.QSize(347, 413))
-        MainWindow.setStyleSheet("background-color: rgb(57, 130, 195);")
-        self.centralwidget = QtWidgets.QWidget(MainWindow)
+    def setupUi(self, TelaLogado):
+        TelaLogado.setObjectName("TelaLogado")
+        TelaLogado.resize(347, 369)
+        TelaLogado.setMinimumSize(QtCore.QSize(347, 369))
+        TelaLogado.setMaximumSize(QtCore.QSize(347, 369))
+        TelaLogado.setStyleSheet("background-color: rgb(57, 130, 195);")
+        TelaLogado.setAnimated(True)
+        self.centralwidget = QtWidgets.QWidget(TelaLogado)
         self.centralwidget.setObjectName("centralwidget")
+        self.verticalLayout = QtWidgets.QVBoxLayout(self.centralwidget)
+        self.verticalLayout.setObjectName("verticalLayout")
+        self.lbl_nome = QtWidgets.QLabel(self.centralwidget)
+        self.lbl_nome.setMaximumSize(QtCore.QSize(16777215, 80))
+        self.lbl_nome.setStyleSheet("color:white;\n"
+"font-size: 24px;")
+        self.lbl_nome.setAlignment(QtCore.Qt.AlignCenter)
+        self.lbl_nome.setObjectName("lbl_nome")
+        self.verticalLayout.addWidget(self.lbl_nome)
         self.lbl_logado = QtWidgets.QLabel(self.centralwidget)
-        self.lbl_logado.setGeometry(QtCore.QRect(88, 70, 191, 51))
         font = QtGui.QFont()
         font.setPointSize(-1)
         self.lbl_logado.setFont(font)
         self.lbl_logado.setStyleSheet("color:white;\n"
 "font-size: 24px;")
+        self.lbl_logado.setAlignment(QtCore.Qt.AlignHCenter|QtCore.Qt.AlignTop)
         self.lbl_logado.setObjectName("lbl_logado")
+        self.verticalLayout.addWidget(self.lbl_logado)
         self.btn_logout = QtWidgets.QPushButton(self.centralwidget)
-        self.btn_logout.setGeometry(QtCore.QRect(121, 190, 120, 41))
+        self.btn_logout.setEnabled(True)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.btn_logout.sizePolicy().hasHeightForWidth())
+        self.btn_logout.setSizePolicy(sizePolicy)
+        self.btn_logout.setMinimumSize(QtCore.QSize(150, 0))
+        self.btn_logout.setMaximumSize(QtCore.QSize(150, 30))
         font = QtGui.QFont()
         font.setPointSize(12)
         font.setBold(True)
@@ -37,17 +55,26 @@ class Ui_TelaLogado(object):
         font.setWeight(75)
         self.btn_logout.setFont(font)
         self.btn_logout.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
-        self.btn_logout.setStyleSheet("background-color: rgb(237, 212, 0);\n"
+        self.btn_logout.setLayoutDirection(QtCore.Qt.LeftToRight)
+        self.btn_logout.setStyleSheet("*{\n"
+"background-color: #edd400;\n"
 "border-radius: 15px;\n"
+"}\n"
+"QPushButton:hover{\n"
+"background-color: #d1bc08;\n"
+"}\n"
+"\n"
 "")
         self.btn_logout.setObjectName("btn_logout")
-        MainWindow.setCentralWidget(self.centralwidget)
+        self.verticalLayout.addWidget(self.btn_logout, 0, QtCore.Qt.AlignRight)
+        TelaLogado.setCentralWidget(self.centralwidget)
 
-        self.retranslateUi(MainWindow)
-        QtCore.QMetaObject.connectSlotsByName(MainWindow)
+        self.retranslateUi(TelaLogado)
+        QtCore.QMetaObject.connectSlotsByName(TelaLogado)
 
-    def retranslateUi(self, MainWindow):
+    def retranslateUi(self, TelaLogado):
         _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "Logado"))
-        self.lbl_logado.setText(_translate("MainWindow", "Você está logado!"))
-        self.btn_logout.setText(_translate("MainWindow", "LOGOUT"))
+        TelaLogado.setWindowTitle(_translate("TelaLogado", "Logado"))
+        self.lbl_nome.setText(_translate("TelaLogado", "Olá, {nome}!"))
+        self.lbl_logado.setText(_translate("TelaLogado", "Você está logado!"))
+        self.btn_logout.setText(_translate("TelaLogado", "SAIR"))

@@ -234,7 +234,6 @@ color: white;
 }
 QPushButton:hover{
 background-color:#60afbf;
-transition: 1s;
 }</string>
       </property>
       <property name="text">
