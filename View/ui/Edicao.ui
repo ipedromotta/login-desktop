@@ -1,29 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>TelaCadastro</class>
- <widget class="QMainWindow" name="TelaCadastro">
+ <class>Edicao</class>
+ <widget class="QMainWindow" name="Edicao">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
     <width>347</width>
-    <height>369</height>
+    <height>250</height>
    </rect>
   </property>
   <property name="minimumSize">
    <size>
     <width>347</width>
-    <height>369</height>
+    <height>250</height>
    </size>
   </property>
   <property name="maximumSize">
    <size>
     <width>347</width>
-    <height>369</height>
+    <height>250</height>
    </size>
   </property>
   <property name="windowTitle">
-   <string>Cadastre-se</string>
+   <string>Edição</string>
   </property>
   <property name="styleSheet">
    <string notr="true">background-color: rgb(57, 130, 195);</string>
@@ -31,14 +31,19 @@
   <widget class="QWidget" name="centralwidget">
    <layout class="QVBoxLayout" name="verticalLayout">
     <item>
-     <widget class="QLabel" name="lbl_crie_conta">
+     <widget class="QLabel" name="lbl_edite_dados">
+      <property name="font">
+       <font>
+        <pointsize>16</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
       <property name="styleSheet">
-       <string notr="true">font-size: 20pt;
-color: white;
-font-weight: bold;</string>
+       <string notr="true">color: white;</string>
       </property>
       <property name="text">
-       <string>Crie sua conta</string>
+       <string>Edite os dados do usuário</string>
       </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>
@@ -46,7 +51,7 @@ font-weight: bold;</string>
      </widget>
     </item>
     <item alignment="Qt::AlignHCenter">
-     <widget class="QLineEdit" name="nome">
+     <widget class="QLineEdit" name="novo_nome">
       <property name="minimumSize">
        <size>
         <width>170</width>
@@ -56,7 +61,7 @@ font-weight: bold;</string>
       <property name="maximumSize">
        <size>
         <width>170</width>
-        <height>30</height>
+        <height>16777215</height>
        </size>
       </property>
       <property name="styleSheet">
@@ -74,12 +79,12 @@ border: 2px solid #edd400;
        <number>20</number>
       </property>
       <property name="placeholderText">
-       <string>Nome</string>
+       <string>Novo nome</string>
       </property>
      </widget>
     </item>
     <item alignment="Qt::AlignHCenter">
-     <widget class="QLineEdit" name="usuario">
+     <widget class="QLineEdit" name="novo_usuario">
       <property name="minimumSize">
        <size>
         <width>170</width>
@@ -89,7 +94,7 @@ border: 2px solid #edd400;
       <property name="maximumSize">
        <size>
         <width>170</width>
-        <height>30</height>
+        <height>16777215</height>
        </size>
       </property>
       <property name="styleSheet">
@@ -107,12 +112,12 @@ border: 2px solid #edd400;
        <number>20</number>
       </property>
       <property name="placeholderText">
-       <string>Usuário</string>
+       <string>Novo usuário</string>
       </property>
      </widget>
     </item>
     <item alignment="Qt::AlignHCenter">
-     <widget class="QLineEdit" name="senha">
+     <widget class="QLineEdit" name="nova_senha">
       <property name="minimumSize">
        <size>
         <width>170</width>
@@ -122,7 +127,7 @@ border: 2px solid #edd400;
       <property name="maximumSize">
        <size>
         <width>170</width>
-        <height>30</height>
+        <height>16777215</height>
        </size>
       </property>
       <property name="styleSheet">
@@ -143,7 +148,29 @@ border: 2px solid #edd400;
        <enum>QLineEdit::Password</enum>
       </property>
       <property name="placeholderText">
-       <string>Senha</string>
+       <string>Nova senha</string>
+      </property>
+     </widget>
+    </item>
+    <item alignment="Qt::AlignHCenter">
+     <widget class="QCheckBox" name="bl_admin">
+      <property name="font">
+       <font>
+        <pointsize>10</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">*{
+color:#fff;
+}
+QCheckBox::Checked{
+	color: #edd400;
+}</string>
+      </property>
+      <property name="text">
+       <string>Administrador</string>
       </property>
      </widget>
     </item>
@@ -165,82 +192,42 @@ font-weight: bold;
        <bool>false</bool>
       </property>
       <property name="alignment">
-       <set>Qt::AlignHCenter|Qt::AlignTop</set>
+       <set>Qt::AlignCenter</set>
       </property>
       <property name="wordWrap">
        <bool>true</bool>
       </property>
      </widget>
     </item>
-    <item alignment="Qt::AlignHCenter">
-     <widget class="QPushButton" name="btn_cadastrar">
-      <property name="minimumSize">
-       <size>
-        <width>150</width>
-        <height>30</height>
-       </size>
-      </property>
-      <property name="maximumSize">
-       <size>
-        <width>150</width>
-        <height>16777215</height>
-       </size>
-      </property>
-      <property name="font">
-       <font>
-        <pointsize>12</pointsize>
-        <weight>75</weight>
-        <bold>true</bold>
-       </font>
-      </property>
-      <property name="cursor">
-       <cursorShape>PointingHandCursor</cursorShape>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">*{
-background-color: #edd400;
-border-radius: 15px;
-}
-QPushButton:hover{
-background-color: #d1bc08;
-}
-
-</string>
-      </property>
-      <property name="text">
-       <string>Cadastrar</string>
-      </property>
-      <property name="default">
-       <bool>true</bool>
-      </property>
-     </widget>
-    </item>
-    <item alignment="Qt::AlignHCenter">
-     <widget class="QPushButton" name="btn_voltar">
-      <property name="minimumSize">
-       <size>
-        <width>150</width>
-        <height>30</height>
-       </size>
-      </property>
-      <property name="maximumSize">
-       <size>
-        <width>150</width>
-        <height>16777215</height>
-       </size>
-      </property>
-      <property name="font">
-       <font>
-        <pointsize>12</pointsize>
-        <weight>75</weight>
-        <bold>true</bold>
-       </font>
-      </property>
-      <property name="cursor">
-       <cursorShape>PointingHandCursor</cursorShape>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">*{
+    <item>
+     <widget class="QWidget" name="horizontalWidget" native="true">
+      <layout class="QHBoxLayout" name="horizontalLayout_2">
+       <item>
+        <widget class="QPushButton" name="btn_salvar">
+         <property name="minimumSize">
+          <size>
+           <width>30</width>
+           <height>30</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>150</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <property name="font">
+          <font>
+           <pointsize>11</pointsize>
+           <weight>50</weight>
+           <bold>false</bold>
+          </font>
+         </property>
+         <property name="cursor">
+          <cursorShape>PointingHandCursor</cursorShape>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">*{
 background-color: #6EC8DB;
 border-radius: 15px;
 color: white;
@@ -248,21 +235,59 @@ color: white;
 QPushButton:hover{
 background-color:#60afbf;
 }</string>
-      </property>
-      <property name="text">
-       <string>Voltar</string>
-      </property>
+         </property>
+         <property name="text">
+          <string>SALVAR</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="btn_cancelar">
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>30</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>150</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <property name="font">
+          <font>
+           <pointsize>11</pointsize>
+           <weight>50</weight>
+           <bold>false</bold>
+          </font>
+         </property>
+         <property name="cursor">
+          <cursorShape>PointingHandCursor</cursorShape>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">*{
+background-color: #df4759;
+border-radius: 15px;
+color: #fff;
+}
+QPushButton:hover{
+background-color: #ba3847;
+}
+
+</string>
+         </property>
+         <property name="text">
+          <string>CANCELAR</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
      </widget>
     </item>
    </layout>
   </widget>
  </widget>
- <tabstops>
-  <tabstop>usuario</tabstop>
-  <tabstop>senha</tabstop>
-  <tabstop>btn_cadastrar</tabstop>
-  <tabstop>btn_voltar</tabstop>
- </tabstops>
  <resources/>
  <connections/>
 </ui>

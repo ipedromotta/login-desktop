@@ -13,7 +13,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 from .resources import resourcesLogin
 
 
-class Ui_MainWindow(object):
+class Ui_Login(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(347, 369)
@@ -161,7 +161,7 @@ class Ui_MainWindow(object):
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "Logon"))
+        MainWindow.setWindowTitle(_translate("MainWindow", "Login"))
         self.lbl_login.setText(_translate("MainWindow", "Faça o seu login"))
         self.usuario.setPlaceholderText(_translate("MainWindow", "Usuário"))
         self.senha.setPlaceholderText(_translate("MainWindow", "Senha"))

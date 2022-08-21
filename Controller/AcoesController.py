@@ -1,40 +1,40 @@
+from Controller.ConnectionDBController import ConnectionDBController
+
 from Model.AdminModel import AdminModel
 from Model.UsuarioModel import UsuarioModel
 
 
 class AcoesController:
-    def cadastrar(self, cnxn, ui, nome, usuario, senha):
+    def __init__(self) -> None:
+        self.cnxn = ConnectionDBController.get_connection()
+    
+    def cadastrar(self, interface, nome:str, usuario:str, senha:str) -> None:
         if usuario == "" or senha == "" or nome == "":
-            ui.lbl_erro.setText("Preencha todos os campos!")
+            interface.msg_cadastro.emit("Preencha todos os campos!")
             return
 
-        usuario_existe = UsuarioModel.usuario_existe(usuario, cnxn)
+        usuario_existe = UsuarioModel.usuario_existe(usuario, self.cnxn)
         if usuario_existe:
-            ui.lbl_erro.setText("Este usuário já está sendo utilizado!")
+            interface.msg_cadastro.emit("Este usuário já está sendo utilizado!")
             return
 
-        cadastrou = UsuarioModel.cadastrar(nome, usuario, senha, cnxn)
+        cadastrou = UsuarioModel.cadastrar(nome, usuario, senha, self.cnxn)
 
-        ui.lbl_erro.setText("")
-        ui.nome.setText("")
-        ui.usuario.setText("")
-        ui.senha.setText("")
+        interface.limpar_cadastro.emit()
 
         if cadastrou:
-            ui.lbl_erro.setText("Usuário cadastrado com sucesso!")
+            interface.msg_cadastro.emit("Usuário cadastrado com sucesso!")
         else:
-            ui.lbl_erro.setText("Usuário não foi cadastrado")
+            interface.msg_cadastro.emit("Usuário não foi cadastrado")
+            
+    def consultar_cadastros(self) -> None:
+        return AdminModel.consultar_usuarios(self.cnxn)
 
-    def editar_dados(self, cnxn, ui, tela_admin, tela, funcao_tela_admin):
-        ui.setupUi(tela)
-        tela.show()
-        linha = tela_admin.tbl_usuarios.currentRow()
-
-        dados_lidos = AdminModel.consultar_usuarios(cnxn)
+    def editar_dados(self, dados_lidos:dict, usuario_selecionado:int, ui, tela_admin) -> None:
         if dados_lidos:
-            numero_id = dados_lidos[linha][0]
-            usuario_antigo = dados_lidos[linha][2]
-            usuario = AdminModel.consultar_usuario(numero_id, cnxn)
+            numero_id = dados_lidos[usuario_selecionado][0]
+            usuario_antigo = dados_lidos[usuario_selecionado][2]
+            usuario = AdminModel.consultar_usuario(numero_id, self.cnxn)
 
             if usuario:
                 ui.novo_nome.setText(str(usuario[0][1]))
@@ -42,10 +42,9 @@ class AcoesController:
                 if usuario[0][4] == 1:
                     ui.bl_admin.setChecked(True)
 
-                ui.btn_salvar.clicked.connect(lambda: self.salvar_edicao(cnxn, tela, ui, usuario_antigo, numero_id, funcao_tela_admin))
-                ui.btn_cancelar.clicked.connect(lambda: funcao_tela_admin(tela))
+                ui.btn_salvar.clicked.connect(lambda: self.salvar_edicao(ui, usuario_antigo, numero_id, tela_admin))
 
-    def salvar_edicao(self, cnxn, tela, ui, usuario_antigo, numero_id, funcao_tela_admin):
+    def salvar_edicao(self, ui, usuario_antigo:str, numero_id:int, tela_admin) -> None:
         nome = ui.novo_nome.text()
         usuario = ui.novo_usuario.text()
         senha = ui.nova_senha.text()
@@ -56,22 +55,19 @@ class AcoesController:
             return
 
         if usuario_antigo != usuario:
-            usuario_existe = UsuarioModel.usuario_existe(usuario, cnxn)
+            usuario_existe = UsuarioModel.usuario_existe(usuario, self.cnxn)
             if usuario_existe:
                 ui.lbl_erro.setText("Este usuário já está sendo utilizado!")
                 return
 
-        atualizou = AdminModel.atualizar_usuario(nome, usuario, senha, admin, numero_id, cnxn)
+        atualizou = AdminModel.atualizar_usuario(nome, usuario, senha, admin, numero_id, self.cnxn)
         if not atualizou:
             ui.lbl_erro.setText("Atualização falhou!")
             return
+        
+        tela_admin()
 
-        funcao_tela_admin(tela)
+    def excluir_dados(self, dados_lidos:dict, usuario_selecionado:int) -> None:
+        numero_id = dados_lidos[usuario_selecionado][0]
+        AdminModel.excluir_usuario(numero_id, self.cnxn)
 
-    def excluir_dados(self, cnxn, tela_admin):
-        linha = tela_admin.tbl_usuarios.currentRow()
-        tela_admin.tbl_usuarios.removeRow(linha)
-
-        dados_lidos = AdminModel.consultar_usuarios(cnxn)
-        numero_id = dados_lidos[linha][0]
-        AdminModel.excluir_usuario(numero_id, cnxn)

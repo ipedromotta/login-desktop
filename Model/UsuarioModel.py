@@ -8,7 +8,7 @@ class UsuarioModel():
         self.Usuario = USUARIO
         self.Administrador = True if BL_ADM == 1 else False
 
-    def logar(self, login, senha, conn):
+    def logar(self, login:str, senha:str, conn) -> object|None:
         try:
             cursor = conn.cursor(dictionary=True)
 
@@ -27,7 +27,7 @@ class UsuarioModel():
             return None
 
     @staticmethod
-    def cadastrar(nome, usuario, senha, conn):
+    def cadastrar(nome:str, usuario:str, senha:str, conn) -> bool:
         senha_criptografada = CriptografiaController().criptografar(senha)
         if not senha_criptografada:
             return False
@@ -38,16 +38,18 @@ class UsuarioModel():
         try:
             cursor.execute(query, info)
             conn.commit()
+            cursor.close()
             return True
         except:
             return False
 
     @staticmethod
-    def usuario_existe(login, conn):
+    def usuario_existe(login:str, conn) -> bool:
         cursor = conn.cursor()
         query = f"SELECT * FROM dados WHERE USUARIO ='{login}'"
         cursor.execute(query)
         row = cursor.fetchone()
+        cursor.close()
         if row:
             return True
             

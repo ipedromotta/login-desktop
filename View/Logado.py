@@ -11,7 +11,7 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 
 
-class Ui_TelaLogado(object):
+class Ui_Logado(object):
     def setupUi(self, TelaLogado):
         TelaLogado.setObjectName("TelaLogado")
         TelaLogado.resize(347, 369)

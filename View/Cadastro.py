@@ -11,7 +11,7 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 
 
-class Ui_TelaCadastro(object):
+class Ui_Cadastro(object):
     def setupUi(self, TelaCadastro):
         TelaCadastro.setObjectName("TelaCadastro")
         TelaCadastro.resize(347, 369)

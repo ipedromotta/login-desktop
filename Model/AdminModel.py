@@ -4,7 +4,7 @@ from Controller.CriptografiaController import CriptografiaController
 class AdminModel:
 
     @staticmethod
-    def consultar_usuarios(conn):
+    def consultar_usuarios(conn) -> list|None:
         try:
             query = "SELECT * FROM dados"
             cursor = conn.cursor()
@@ -16,7 +16,7 @@ class AdminModel:
             return None
 
     @staticmethod
-    def consultar_usuario(id, conn):
+    def consultar_usuario(id:int, conn) -> list|None:
         try:
             cursor = conn.cursor()
             cursor.execute("SELECT * FROM dados WHERE ID =" + str(id))
@@ -27,7 +27,7 @@ class AdminModel:
             return None
 
     @staticmethod
-    def atualizar_usuario(nome, usuario, senha, admin, numero_id, conn):
+    def atualizar_usuario(nome:str, usuario:str, senha:str, admin:int, numero_id:int, conn) -> bool:
         try:
             senha_criptografada = CriptografiaController().criptografar(senha)
             if not senha_criptografada:
@@ -44,7 +44,7 @@ class AdminModel:
             return False
 
     @staticmethod
-    def excluir_usuario(id, conn):
+    def excluir_usuario(id:int, conn) -> None:
         try:
             cursor = conn.cursor()
             cursor.execute("DELETE FROM dados WHERE ID =" + str(id))

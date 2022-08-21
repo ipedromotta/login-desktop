@@ -11,7 +11,7 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 
 
-class Ui_TelaEdicao(object):
+class Ui_Edicao(object):
     def setupUi(self, TelaEdicao):
         TelaEdicao.setObjectName("TelaEdicao")
         TelaEdicao.resize(347, 250)
@@ -93,7 +93,7 @@ class Ui_TelaEdicao(object):
         self.bl_admin.setObjectName("bl_admin")
         self.verticalLayout.addWidget(self.bl_admin, 0, QtCore.Qt.AlignHCenter)
         self.lbl_erro = QtWidgets.QLabel(self.centralwidget)
-        self.lbl_erro.setStyleSheet("color: rgb(237, 212, 0);;\n"
+        self.lbl_erro.setStyleSheet("color: rgb(237, 212, 0);\n"
 "font-size: 13pt;\n"
 "font-weight: bold;\n"
 "")
