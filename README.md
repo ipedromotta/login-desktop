@@ -1,5 +1,5 @@
 <h1 align="center">
-<img src="https://github.com/ipedromotta/Python/blob/main/logo.png" width="50"><br>Sistema de login Python/MySQL
+<img src="https://github.com/ipedromotta/VueJS-Flask/blob/main/frontend/src/assets/logo-python.png" width="50"><br>Sistema de login Python/MySQL
 </h1>
 
 ## 📄 Sobre #
