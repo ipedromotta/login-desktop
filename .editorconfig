@@ -3,3 +3,6 @@ Host=localhost
 Database=usuarios
 User=root
 Password=
+
+[Log]
+Level=2

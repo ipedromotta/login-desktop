@@ -1,58 +1,55 @@
 from PyQt5 import QtCore, QtWidgets
 
+from Content.Log import logger
 from View.Edicao import Ui_Edicao
 from Model.UsuarioModel import UsuarioModel
-from Model.AdminModel import AdminModel
 
 
 class EdicaoController(QtWidgets.QMainWindow):
     voltar_tela = QtCore.pyqtSignal()
     
-    def __init__(self, conn=None) -> None:
+    def __init__(self) -> None:
         super().__init__()
         self.ui = Ui_Edicao()
         self.ui.setupUi(self)
+        self._usuario_editado = None
         self.ui.btn_cancelar.clicked.connect(self.voltar)
-        self._conn = conn
+        self.ui.btn_salvar.clicked.connect(self.salvar_edicao)
         
-    def carregar_tela(self, dados_lidos:dict, usuario_selecionado:int) -> None:
-        if dados_lidos:
-            numero_id = dados_lidos[usuario_selecionado][0]
-            usuario_antigo = dados_lidos[usuario_selecionado][2]
-            usuario = AdminModel.consultar_usuario(numero_id, self._conn)
+    def carregar_tela(self, usuario_selecionado:UsuarioModel) -> None:
+        logger.info("Carregando tela de edição")
+        self.ui.nova_senha.setText("")
+        self._usuario_editado = usuario_selecionado
+        self.ui.novo_nome.setText(str(usuario_selecionado.nome))
+        self.ui.novo_usuario.setText(str(usuario_selecionado.usuario))
+        self.ui.bl_admin.setChecked(usuario_selecionado.administrador)
 
-            if usuario:
-                self.ui.novo_nome.setText(str(usuario[0][1]))
-                self.ui.novo_usuario.setText(str(usuario[0][2]))
-                self.ui.nova_senha.setText("")
-                if usuario[0][4] == 1:
-                    self.ui.bl_admin.setChecked(True)
-                else:
-                    self.ui.bl_admin.setChecked(False)
-
-                self.ui.btn_salvar.clicked.connect(lambda: self.salvar_edicao(usuario_antigo, numero_id))
-        
-    def salvar_edicao(self, usuario_antigo:str, numero_id:int) -> None:
+    def salvar_edicao(self) -> None:
+        logger.info("Salvando edição...")
         nome = self.ui.novo_nome.text()
         usuario = self.ui.novo_usuario.text()
         senha = self.ui.nova_senha.text()
         admin = self.ui.bl_admin.isChecked()
 
         if usuario == '' or senha == '' or nome == '':
+            logger.warning("Tentativa de edição com campos vazios")
             self.ui.lbl_erro.setText("Preencha todos os dados!")
             return
 
-        if usuario_antigo != usuario:
-            usuario_existe = UsuarioModel.usuario_existe(usuario, self._conn)
+        if self._usuario_editado.usuario != usuario:
+            usuario_existe = UsuarioModel.usuario_existe(usuario)
             if usuario_existe:
+                logger.warning("Este usuário já está sendo utilizado!")
                 self.ui.lbl_erro.setText("Este usuário já está sendo utilizado!")
                 return
 
-        atualizou = AdminModel.atualizar_usuario(nome, usuario, senha, admin, numero_id, self._conn)
+        atualizou = UsuarioModel.atualizar_usuario(self._usuario_editado.id, nome, usuario, senha, admin)
         if not atualizou:
+            logger.warning("Atualização falhou!")
             self.ui.lbl_erro.setText("Atualização falhou!")
             return
         else:
+            logger.info("Usuário editado com sucesso")
             self.voltar()
     
     def voltar(self):

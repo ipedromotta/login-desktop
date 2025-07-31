@@ -1,26 +1,42 @@
-import sys, os, signal
+import sys
+import argparse
+
 from PyQt5 import QtWidgets
 
+from Content.Log import logger
+from Model.UsuarioModel import UsuarioModel
 from Controller.PageController import PageController
 
 
-if __name__ == "__main__":
+__version__ = "2.0.0"
+
+
+def configurar_argumentos():
+    parser = argparse.ArgumentParser(description="Aplicação de Gerenciamento de Usuários")
+    parser.add_argument('--version', action='version', version=f"%(prog)s {__version__}")
+    return parser.parse_args()
+
+
+def iniciar_aplicacao():
+    logger.info(f"Iniciando aplicação - versão {__version__}")
+    app = QtWidgets.QApplication(sys.argv)
+
     try:
-        app = QtWidgets.QApplication(sys.argv)
+        UsuarioModel.verificar_admin()
 
         controller = PageController()
         controller.mostrar_tela_login()
 
-        if not app.exec_():
-            try:
-                os.kill(os.getpid(), signal.SIGINT)
-                sys.exit(0)
-            except Exception as ex:
-                print(ex)
-                
-    except Exception as ex:
+        logger.info("Aplicação iniciada com sucesso")
+        sys.exit(app.exec_())
+
+    except Exception as e:
+        logger.critical(f"Erro crítico na aplicação: {e}", exc_info=True)
         app.closeAllWindows()
         app.quit()
-        os.kill(os.getpid(), signal.SIGINT)
-        print(ex)
-        sys.exit(0)
+        sys.exit(1)
+
+
+if __name__ == "__main__":
+    configurar_argumentos()
+    iniciar_aplicacao()

@@ -32,7 +32,7 @@ class Ui_Logado(object):
         self.verticalLayout.addWidget(self.lbl_nome)
         self.lbl_logado = QtWidgets.QLabel(self.centralwidget)
         font = QtGui.QFont()
-        font.setPointSize(-1)
+        font.setPointSize(1)
         self.lbl_logado.setFont(font)
         self.lbl_logado.setStyleSheet("color:white;\n"
 "font-size: 24px;")
